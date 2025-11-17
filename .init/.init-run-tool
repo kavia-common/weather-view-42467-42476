@@ -1,0 +1,4 @@
+{
+    "command": "npm run dev -- --port <port> --host <host>",
+    "working_directory": "/home/kavia/workspace/code-generation/weather-view-42467-42476/weather_frontend"
+}
