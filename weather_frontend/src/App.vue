@@ -1,85 +1,45 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import LocationSearch from '@/components/weather/LocationSearch.vue'
+import UnitToggle from '@/components/weather/UnitToggle.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="app-shell">
+    <header class="header-gradient surface" style="padding: 1rem 1.25rem; margin-bottom: 1rem;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap: 1rem; flex-wrap: wrap;">
+        <div style="display:flex; align-items:center; gap:.75rem;">
+          <div style="width:40px;height:40px;border-radius:10px;background:#1e40af;display:flex;align-items:center;justify-content:center;color:white;box-shadow: var(--op-shadow);">
+            <span style="font-weight:700;">W</span>
+          </div>
+          <div>
+            <div style="font-size:1.15rem;font-weight:700;color:#0f172a;">WeatherView</div>
+            <div class="text-muted small">Ocean Professional</div>
+          </div>
+        </div>
+        <div style="flex:1; min-width: 260px;">
+          <LocationSearch />
+        </div>
+        <div style="display:flex; align-items:center; gap:.5rem;">
+          <UnitToggle />
+        </div>
+      </div>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <main>
+      <RouterView />
+    </main>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <footer style="margin-top: 1.25rem;">
+      <div class="surface" style="padding:.85rem 1rem; display:flex; align-items:center; justify-content:space-between; gap:.75rem;">
+        <div class="text-muted small">Tip: Toggle units between °C and °F anytime.</div>
+        <div class="badge">Built with Vue 3 + Vite</div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+.app-shell { display: flex; flex-direction: column; gap: .5rem; }
+main { min-height: 55vh; }
 </style>
